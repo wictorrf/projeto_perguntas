@@ -1,0 +1,19 @@
+body{
+  background-color:	#ffffff
+}
+#mainBody{
+  background-color: #4b9093;
+}
+#form-pergunta {
+  margin-top: 20px;
+}
+#logo{
+  width: 5em;
+}
+.navbar{
+  background-color: #4b9093;
+  border-bottom: 1px solid #c4c4c4;
+}
+.button{
+  background-color: #f59a73
+}
