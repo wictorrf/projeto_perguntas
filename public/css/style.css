@@ -15,5 +15,10 @@ body{
   border-bottom: 1px solid #c4c4c4;
 }
 .button{
-  background-color: #f59a73
+  background-color: #f59a73;
+  margin: 0.5em;
+}
+.x{
+  display:flex;
+  justify-content: space-between;
 }
