@@ -1,26 +1,22 @@
 <%- include('partials/header') %>
 <body id="mainBody">
   <%- include('partials/navbar') %>
-  <div class="container">
-    <hr>
-    <div class="x">
-      <h1>Perguntas</h1>
-      <a href="/perguntar" class="btn button">Perguntar</a>
+  <div class="container cont-home">
+    <div class="text">
+      <main class="site__main">
+        <div>
+          <h1>
+            O melhor <br />
+            site de perguntas <br />
+            e respostas <br />
+            que você <br />
+            ja viu! <br />
+          </h1>
+        <a href="/home"><button class="btn button-main">Perguntas</button></a> 
+        </div>
+      </main>
     </div>
-    <hr>
-    
-    <% questions.forEach(question => { %>
-      <br>
-      <div class="card">
-        <div class="card-body">
-          <h3><%= question.title %></h3>
-        </div>
-        <div class="card-footer">
-          <button class="btn button">Responder</button>
-        </div>
-      </div>
-
-    <% }) %>
+    <img src="/img/study2.png" id="study">
   </div>
 </body>
 <%- include('partials/footer') %>

@@ -18,16 +18,20 @@ app.use(bodyparser.urlencoded({extended: false}));
 app.use(bodyparser.json());
 //rotas:
 app.get("/", (req, res) => {
-  questionModel.findAll({ raw: true, order: [ ['id', 'DESC'] ] }).then(questions => {
-    res.render("index", {
-      questions: questions
-    });
-  })
+  res.render("index")
 });
 
 app.get("/perguntar", (req, res) => {
   res.render("perguntar");
 });
+
+app.get("/home", (req, res) => {
+  questionModel.findAll({ raw: true, order: [ ['id', 'DESC'] ] }).then(questions => {
+    res.render("home", {
+      questions: questions
+    });
+  })
+})
 
 // Para salvas os dados no banco de dados, é preciso antes de tudo importar o model da tabela que tem que ser salva aqui;
 app.post("/salvarpergunta", (req, res) => {
@@ -42,6 +46,21 @@ app.post("/salvarpergunta", (req, res) => {
   })
 
 });
+
+app.get("/pergunta/:id", (req, res) => {
+  var id = req.params.id;
+  questionModel.findOne({
+    where: {id: id}                                                                        
+  }).then(question => {
+    if(question != undefined){
+      res.render("question", {
+        question: question
+      });
+    }else { // question not found
+      res.redirect("/");
+    }
+  })
+})
 
 app.listen(8080, ()=>{
   console.log("App rodando");

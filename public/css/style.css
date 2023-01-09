@@ -10,6 +10,15 @@ body{
 #logo{
   width: 5em;
 }
+#study{
+  width: 25em;
+}
+.text{
+  /* border: 1px solid red; */
+  margin-top: auto;
+  letter-spacing: 0.3em;
+  width: 50%;
+}
 .navbar{
   background-color: #4b9093;
   border-bottom: 1px solid #c4c4c4;
@@ -18,7 +27,19 @@ body{
   background-color: #f59a73;
   margin: 0.5em;
 }
+.button-main{
+  background-color: #f59a73;
+  width: 80%;
+  height: 50px;
+  margin: 0.5em;
+}
 .x{
   display:flex;
   justify-content: space-between;
 }
+.cont-home{
+  display: flex;
+  margin-top: 10px;
+  justify-content: space-between;
+}
+
