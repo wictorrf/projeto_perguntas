@@ -1,5 +1,5 @@
 body{
-  background-color:	#ffffff
+  background-color:	#c4c4c4
 }
 #mainBody{
   background-color: #4b9093;
@@ -19,9 +19,16 @@ body{
   letter-spacing: 0.3em;
   width: 50%;
 }
+#resposta{
+  font-size: large;
+}
 .navbar{
   background-color: #4b9093;
   border-bottom: 1px solid #c4c4c4;
+}
+.title_responses{
+  background-color: #4b9093;
+  text-align: center;
 }
 .button{
   background-color: #f59a73;

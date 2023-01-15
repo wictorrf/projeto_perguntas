@@ -3,6 +3,7 @@ const app = express();
 const bodyparser = require("body-parser")
 const connection = require("./database/database");
 const questionModel = require("./database/question");
+const Response = require("./database/Response");
 
 //database
 connection.authenticate().then(() => {
@@ -31,7 +32,7 @@ app.get("/home", (req, res) => {
       questions: questions
     });
   })
-})
+});
 
 // Para salvas os dados no banco de dados, é preciso antes de tudo importar o model da tabela que tem que ser salva aqui;
 app.post("/salvarpergunta", (req, res) => {
@@ -50,17 +51,36 @@ app.post("/salvarpergunta", (req, res) => {
 app.get("/pergunta/:id", (req, res) => {
   var id = req.params.id;
   questionModel.findOne({
-    where: {id: id}                                                                        
+    where: {id: id}                                                                  
   }).then(question => {
     if(question != undefined){
-      res.render("question", {
-        question: question
+
+      Response.findAll({
+        where: {questionId: question.id},
+        order: [['id', 'desc']]    
+      }).then(responses => {
+        res.render("question", {
+          question: question,
+          response: responses
+        });
       });
     }else { // question not found
       res.redirect("/");
     }
   })
-})
+});
+
+app.post("/reply",(req, res) => {
+var body = req.body.body;
+var questionId = req.body.question
+
+Response.create({
+    body: body,
+    questionId: questionId
+  }).then(() => {
+    res.redirect("/pergunta/"+questionId);
+  })
+});
 
 app.listen(8080, ()=>{
   console.log("App rodando");
